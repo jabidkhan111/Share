@@ -1,0 +1,18 @@
+share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_SUBJECT,"Share App");
+                    String shareMessage = "https://play.google.com/store/apps/details?id=com.jksurajpuriya.perfectweb";
+                    intent.putExtra(Intent.EXTRA_TEXT,shareMessage);
+                    startActivity(Intent.createChooser(intent,"Share by"));
+
+
+                }catch (Exception e){
+                    Toast.makeText(FirstActivity.this, "Send to Unable App", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
