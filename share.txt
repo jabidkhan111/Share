@@ -16,3 +16,22 @@ share.setOnClickListener(new View.OnClickListener() {
                 }
             }
         });
+        
+        
+        
+        // Share in RecyclerView 
+        
+        holder.binding.share.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_SUBJECT,"Jokes");
+                intent.putExtra(Intent.EXTRA_TEXT,jokesModelArrayList.get(position).getJokes());
+                context.startActivity(Intent.createChooser(intent,"Share by"));
+
+            }catch (Exception e){
+                Toast.makeText(context, "Send to Unable", Toast.LENGTH_SHORT).show();
+            }
+
+            Toast.makeText(context, "Share...", Toast.LENGTH_SHORT).show();
+        });
